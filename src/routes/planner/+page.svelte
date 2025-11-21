@@ -46,6 +46,7 @@
 		{ name: 'Notes - Weekly - Columns', value: 'notes-week-columns' },
 		{ name: 'Notes - Weekly - Rows', value: 'notes-week-rows' },
 		{ name: 'Notes - Daily', value: 'notes-day' },
+		{ name: 'Journal - Medium', value: 'journal-medium' },
 		{ name: 'Habit Checkboxes - Grouped by Week', value: 'habit-year-by-week' },
 		{ name: 'Habit Checkboxes - Grouped by Month', value: 'habit-year-by-month' },
 	];
@@ -70,7 +71,8 @@
 			if (
 				!t.value.startsWith('notes') &&
 				!t.value.startsWith('habit') &&
-				!t.value.startsWith('calendar')
+				!t.value.startsWith('calendar') &&
+				!t.value.startsWith('journal')
 			) {
 				return true;
 			}
@@ -80,7 +82,12 @@
 					'notes-month',
 					'calendar-month',
 					'calendar-month-with-notes',
+					'journal-medium',
 				].includes(t.value);
+			}
+			// Journal is only for day pages
+			if (t.value.startsWith('journal')) {
+				return location === 'day';
 			}
 			const timeframe = t.value.split('-')[1];
 			return location === timeframe;

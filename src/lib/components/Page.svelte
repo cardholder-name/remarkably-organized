@@ -12,6 +12,7 @@
 	import AgendaWeek from './AgendaWeek.svelte';
 	import AgendaDay from './AgendaDay.svelte';
 	import TaskProgress from './TaskProgress.svelte';
+	import JournalDay from './JournalDay.svelte';
 
 	let {
 		display = 'dotted' as Collection['type'],
@@ -96,6 +97,8 @@
 			display="rows" />
 	{:else if display === 'notes-day'}
 		<NotesDay />
+	{:else if display === 'journal-medium'}
+		<JournalDay />
 	{:else if display === 'habit-year-by-week'}
 		<HabitsYear
 			{timeframe}
